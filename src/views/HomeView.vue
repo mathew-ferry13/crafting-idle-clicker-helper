@@ -3,28 +3,43 @@ import { Dependency } from "@/types/Dependency";
 import { Blueprint } from "@/types/Blueprint";
 import blueprintConfig from "../assets/blueprints.json";
 
+const localStorageKey = "crafting-idle-clicker-helper-count";
+
 export default {
   data: () => ({
-    merchantCount: 4 as number,
+    localMerchantCount: (localStorage.getItem(localStorageKey) || 4) as number,
     minMerchantCount: 4 as number,
     maxMerchantCount: 100 as number,
   }),
   computed: {
+    merchantCount: {
+      get(): number {
+        return this.localMerchantCount;
+      },
+      set(c: number): void {
+        this.localMerchantCount = c;
+        localStorage.setItem(localStorageKey, c);
+      },
+    },
     blueprints(): Array<Blueprint> {
-      return blueprintConfig.map((config) => {
-        let requires: Array<Dependency> = [];
-        if (config.requires && config.requires.length) {
-          requires = config.requires.map(
-            (r) => new Dependency(r.name, r.count)
+      return blueprintConfig
+        .map((config) => {
+          let requires: Array<Dependency> = [];
+          if (config.requires && config.requires.length) {
+            requires = config.requires.map(
+              (r) => new Dependency(r.name, r.count)
+            );
+          }
+          return new Blueprint(
+            config.name,
+            config.produces,
+            config.order,
+            requires
           );
-        }
-        return new Blueprint(
-          config.name,
-          config.produces,
-          config.order,
-          requires
-        );
-      });
+        })
+        .sort((a: Blueprint, b: Blueprint) => {
+          return a.order < b.order ? -1 : a.order > b.order ? 1 : 0;
+        });
     },
     blueprintCounts(): Map<string, number> {
       const countMap = new Map<string, number>();
@@ -99,14 +114,23 @@ export default {
       <v-table fixed-header>
         <thead>
           <tr>
-            <th class="text-left">Name</th>
-            <th class="text-left">Count</th>
+            <th class="text-left">Blueprint Name</th>
+            <th class="text-left">Target Level</th>
+            <th class="text-left">Start Merchants</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="blueprint in blueprints" :key="blueprint.name">
-            <td>{{ blueprint.name }}</td>
+            <td class="font-weight-bold">{{ blueprint.name }}</td>
             <td>{{ blueprintCounts.get(blueprint.name) }}</td>
+            <td>
+              {{
+                Math.ceil(
+                  (blueprintCounts.get(blueprint.name) * blueprint.produces) /
+                    merchantCount
+                )
+              }}
+            </td>
           </tr>
         </tbody>
       </v-table>

@@ -90,5 +90,151 @@
         "count": 8
       }
     ]
+  },
+  {
+    "name": "Copper Ore",
+    "produces": 1,
+    "order": 10,
+    "requires": [
+
+    ]
+  },
+  {
+    "name": "Copper Ingots",
+    "produces": 3,
+    "order": 11,
+    "requires": [
+      {
+        "name": "Copper Ore",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "name": "Copper Axe",
+    "produces": 1,
+    "order": 12,
+    "requires": [
+      {
+        "name": "Wood",
+        "count": 3
+      },
+      {
+        "name": "Copper Ingots",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "name": "Copper Blades",
+    "produces": 1,
+    "order": 13,
+    "requires": [
+      {
+        "name": "Copper Ingots",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "name": "Copper Knife",
+    "produces": 1,
+    "order": 14,
+    "requires": [
+      {
+        "name": "Copper Blades",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "name": "Copper Dagger",
+    "produces": 1,
+    "order": 15,
+    "requires": [
+      {
+        "name": "Copper Blades",
+        "count": 2
+      },
+      {
+        "name": "Hilt",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "name": "Tin Ore",
+    "produces": 1,
+    "order": 16,
+    "requires": [
+
+    ]
+  },
+  {
+    "name": "Bronze Ingots",
+    "produces": 5,
+    "order": 17,
+    "requires": [
+      {
+        "name": "Copper Ore",
+        "count": 3
+      },
+      {
+        "name": "Tin Ore",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "name": "Bronze Spear",
+    "produces": 2,
+    "order": 18,
+    "requires": [
+      {
+        "name": "Wood",
+        "count": 4
+      },
+      {
+        "name": "Bronze Ingots",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "name": "Bronze Shield",
+    "produces": 1,
+    "order": 19,
+    "requires": [
+      {
+        "name": "Bronze Ingots",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "name": "Bronze Blades",
+    "produces": 1,
+    "order": 20,
+    "requires": [
+      {
+        "name": "Bronze Ingots",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "name": "Bronze Dagger",
+    "produces": 1,
+    "order": 21,
+    "requires": [
+      {
+        "name": "Bronze Blades",
+        "count": 2
+      },
+      {
+        "name": "Hilt",
+        "count": 1
+      }
+    ]
   }
 ]
