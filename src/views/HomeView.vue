@@ -5,7 +5,9 @@ import blueprintConfig from "../assets/blueprints.json";
 
 export default {
   data: () => ({
-    merchantCount: 6 as number,
+    merchantCount: 4 as number,
+    minMerchantCount: 4 as number,
+    maxMerchantCount: 100 as number,
   }),
   computed: {
     blueprints(): Array<Blueprint> {
@@ -62,8 +64,52 @@ export default {
 
 <template>
   <main>
-    <div v-for="blueprint in blueprints" :key="blueprint.name">
-      {{ blueprint.name }} - {{ blueprintCounts.get(blueprint.name) }}
-    </div>
+    <v-container fluid>
+      <v-row>
+        <v-spacer />
+        <v-col cols="12" sm="8" md="6" lg="4" xl="3">
+          <v-slider
+            v-model="merchantCount"
+            label="Merchant Count"
+            class="align-center"
+            :max="maxMerchantCount"
+            :min="minMerchantCount"
+            step="1"
+            hide-details
+          >
+            <template v-slot:append>
+              <v-text-field
+                v-model="merchantCount"
+                hide-details
+                single-line
+                density="compact"
+                type="number"
+                style="width: 80px"
+              ></v-text-field>
+            </template>
+          </v-slider>
+        </v-col>
+        <v-spacer />
+      </v-row>
+      <v-row>
+        <v-col>
+          <span class="text-h4">Blueprint Counts</span>
+        </v-col>
+      </v-row>
+      <v-table fixed-header>
+        <thead>
+          <tr>
+            <th class="text-left">Name</th>
+            <th class="text-left">Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="blueprint in blueprints" :key="blueprint.name">
+            <td>{{ blueprint.name }}</td>
+            <td>{{ blueprintCounts.get(blueprint.name) }}</td>
+          </tr>
+        </tbody>
+      </v-table>
+    </v-container>
   </main>
 </template>
