@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Wood",
+    "produces": 1,
+    "order": 1
+  },
+  {
+    "name": "Club",
+    "produces": 1,
+    "order": 2,
+    "requires": [
+      {
+        "name": "Wood",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "name": "Arrows",
+    "produces": 3,
+    "order": 3,
+    "requires": [
+      {
+        "name": "Wood",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "name": "Bow",
+    "produces": 1,
+    "order": 4,
+    "requires": [
+      {
+        "name": "Wood",
+        "count": 2
+      },
+      {
+        "name": "Arrows",
+        "count": 5
+      }
+    ]
+  }
+]
