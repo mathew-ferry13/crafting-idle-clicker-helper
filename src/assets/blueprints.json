@@ -40,5 +40,55 @@
         "count": 5
       }
     ]
+  },
+  {
+    "name": "Rawhide",
+    "produces": 1,
+    "order": 5,
+    "requires": []
+  },
+  {
+    "name": "Leather",
+    "produces": 3,
+    "order": 6,
+    "requires": [
+      {
+        "name": "Rawhide",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "name": "Boots",
+    "produces": 1,
+    "order": 7,
+    "requires": [
+      {
+        "name": "Leather",
+        "count": 3
+      }
+    ]
+  },
+  {
+    "name": "Hilt",
+    "produces": 1,
+    "order": 8,
+    "requires": [
+      {
+        "name": "Leather",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "name": "Leather Armor",
+    "produces": 1,
+    "order": 9,
+    "requires": [
+      {
+        "name": "Leather",
+        "count": 8
+      }
+    ]
   }
 ]
