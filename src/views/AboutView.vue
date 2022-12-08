@@ -1,15 +1,11 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <div>
+      This site exists to help determine the optimal amount of blueprints to
+      auto-build for each type of blueprint.
+    </div>
+    <div>
+      This site is in no way affiliated with the Crafting Idle Clicker game.
+    </div>
   </div>
 </template>
-
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
