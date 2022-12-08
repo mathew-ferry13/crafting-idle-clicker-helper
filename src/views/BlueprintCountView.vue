@@ -13,6 +13,8 @@
             :min="minMerchantCount"
             step="1"
             hide-details
+            :disabled="minMerchantCount === maxMerchantCount"
+            :readonly="minMerchantCount === maxMerchantCount"
           >
             <template v-slot:append>
               <v-text-field
