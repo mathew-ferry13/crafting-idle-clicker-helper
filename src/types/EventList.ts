@@ -117,7 +117,7 @@ const worldIsMineEvent = new Event(EventType.WORLD_IS_MINE, 10, 10, [
   ]),
   new Blueprint("Steel Chisel", 1, 14, [new Dependency("Steel", 1)]),
   new Blueprint("Steel Pickaxe", 1, 15, [
-    new Dependency("Iron Ingots", 2),
+    new Dependency("Steel", 2),
     new Dependency("Wood", 2),
   ]),
   new Blueprint("Gold Ore", 3, 16, [new Dependency("Steel Pickaxe", 1)]),
@@ -137,6 +137,7 @@ const worldIsMineEvent = new Event(EventType.WORLD_IS_MINE, 10, 10, [
     new Dependency("Uncut Topaz", 1),
     new Dependency("Iron Chisel", 1),
   ]),
+  new Blueprint("Uncut Amethyst", 2, 24, [new Dependency("Gunpowder", 1)]),
 ]);
 
 export { baseEvent, worldIsMineEvent };
