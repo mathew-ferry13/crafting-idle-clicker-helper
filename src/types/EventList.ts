@@ -110,7 +110,7 @@ const worldIsMineEvent = new Event(EventType.WORLD_IS_MINE, 10, 10, [
     new Dependency("Wood", 2),
   ]),
   new Blueprint("Silver Ore", 3, 11, [new Dependency("Iron Pickaxe", 1)]),
-  new Blueprint("Silver Ingots", 3, 12, [new Dependency("Iron Ore", 1)]),
+  new Blueprint("Silver Ingots", 3, 12, [new Dependency("Silver Ore", 1)]),
   new Blueprint("Steel", 1, 13, [
     new Dependency("Iron Ingots", 2),
     new Dependency("Coal", 4),
