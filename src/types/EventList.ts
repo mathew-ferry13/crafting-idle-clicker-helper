@@ -138,6 +138,16 @@ const worldIsMineEvent = new Event(EventType.WORLD_IS_MINE, 10, 10, [
     new Dependency("Iron Chisel", 1),
   ]),
   new Blueprint("Uncut Amethyst", 2, 24, [new Dependency("Gunpowder", 1)]),
+  new Blueprint("Cut Amethyst", 1, 25, [
+    new Dependency("Uncut Amethyst", 1),
+    new Dependency("Iron Chisel", 1),
+  ]),
+  new Blueprint("Glycerol", 1, 26),
+  new Blueprint("Nitric Acid", 1, 27, [new Dependency("Saltpeter", 1)]),
+  new Blueprint("Nitrating Acid", 1, 28, [
+    new Dependency("Sulfur", 1),
+    new Dependency("Nitric Acid", 1),
+  ]),
 ]);
 
 export { baseEvent, worldIsMineEvent };
