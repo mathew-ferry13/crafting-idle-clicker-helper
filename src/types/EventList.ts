@@ -84,6 +84,19 @@ const baseEvent = new Event(EventType.BASE, 4, 100, [
     new Dependency("Iron Blades", 4),
     new Dependency("Hilt", 2),
   ]),
+  new Blueprint("Paper", 0, 39),
+  new Blueprint("Gold Ore", 1, 40),
+  new Blueprint("Gold Ingots", 3, 41, [new Dependency("Gold Ore", 1)]),
+  new Blueprint("Uncut Emerald", 0, 42),
+  new Blueprint("Gold Ring", 1, 43, [new Dependency("Gold Ingots", 1)]),
+  new Blueprint("Cut Emerald", 0, 44),
+  new Blueprint("Gold Necklace", 1, 45, [new Dependency("Gold Ingots", 3)]),
+  new Blueprint("Uncut Ruby", 0, 46),
+  new Blueprint("Paper Sheets", 0, 47),
+  new Blueprint("Steel", 1, 48, [
+    new Dependency("Iron Ingots", 2),
+    new Dependency("Coal", 4),
+  ]),
 ]);
 
 const worldIsMineEvent = new Event(EventType.WORLD_IS_MINE, 10, 10, [
@@ -151,6 +164,21 @@ const worldIsMineEvent = new Event(EventType.WORLD_IS_MINE, 10, 10, [
   new Blueprint("Nitroglycerin", 2, 29, [
     new Dependency("Glycerol", 1),
     new Dependency("Nitrating Acid", 1),
+  ]),
+  new Blueprint("Uncut Emerald", 2, 30, [new Dependency("Nitroglycerin", 1)]),
+  new Blueprint("Cut Emerald", 1, 31, [
+    new Dependency("Uncut Emerald", 1),
+    new Dependency("Steel Chisel", 1),
+  ]),
+  new Blueprint("Uncut Sapphire", 2, 32, [new Dependency("Nitroglycerin", 1)]),
+  new Blueprint("Cut Sapphire", 1, 33, [
+    new Dependency("Uncut Sapphire", 1),
+    new Dependency("Steel Chisel", 1),
+  ]),
+  new Blueprint("Uncut Ruby", 2, 34, [new Dependency("Nitroglycerin", 1)]),
+  new Blueprint("Cut Ruby", 1, 35, [
+    new Dependency("Uncut Ruby", 1),
+    new Dependency("Steel Chisel", 1),
   ]),
 ]);
 
