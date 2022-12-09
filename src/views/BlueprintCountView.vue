@@ -29,6 +29,32 @@
           </v-slider>
         </v-col>
         <v-spacer />
+        <v-col cols="12" sm="9" md="7" lg="5" xl="4">
+          <v-slider
+            v-model="oreFactor"
+            color="primary"
+            label="Ore Output %"
+            step="1"
+            class="align-center"
+            :max="maxOreFactor"
+            :min="minOreFactor"
+            hide-details
+            :disabled="minOreFactor === maxOreFactor"
+            :readonly="minOreFactor === maxOreFactor"
+          >
+            <template v-slot:append>
+              <v-text-field
+                v-model="oreFactor"
+                hide-details
+                single-line
+                density="compact"
+                type="number"
+                style="width: 100px"
+              ></v-text-field>
+            </template>
+          </v-slider>
+        </v-col>
+        <v-spacer />
       </v-row>
       <v-row>
         <v-col>
@@ -59,7 +85,8 @@
                   ? ""
                   : Math.ceil(
                       (blueprintCounts.get(blueprint.name) *
-                        blueprint.produces) /
+                        (blueprint.produces *
+                          (blueprint.isOre ? (oreFactor / 100) : 1))) /
                         merchantCount
                     )
               }}
@@ -92,6 +119,7 @@ export default {
   data: function () {
     return {
       localMerchantCount: 1 as number,
+      localOreFactor: 100 as number,
     };
   },
   computed: {
@@ -105,6 +133,12 @@ export default {
     maxMerchantCount(): number {
       return this.currentEvent.maxMerchantCount;
     },
+    minOreFactor(): number {
+      return this.currentEvent.minOreFactor;
+    },
+    maxOreFactor(): number {
+      return this.currentEvent.maxOreFactor;
+    },
     blueprintConfig(): Array<Blueprint> {
       return this.currentEvent.blueprints;
     },
@@ -115,6 +149,15 @@ export default {
       set(c: number): void {
         this.localMerchantCount = c;
         localStorage.setItem(`${localStorageKey}_${this.type}`, c);
+      },
+    },
+    oreFactor: {
+      get(): number {
+        return this.localOreFactor;
+      },
+      set(c: number): void {
+        this.localOreFactor = c;
+        localStorage.setItem(`${localStorageKey}_${this.type}_ore`, c);
       },
     },
     blueprints(): Array<Blueprint> {
@@ -131,6 +174,7 @@ export default {
             config.name,
             config.produces,
             config.order,
+            config.isOre,
             requires
           );
         })
@@ -156,7 +200,10 @@ export default {
       if (blueprint.produces <= 0) {
         return -1;
       }
-      let count = Math.ceil(this.merchantCount / blueprint.produces);
+      let count = Math.ceil(
+        this.merchantCount /
+          (blueprint.produces * (blueprint.isOre ? (this.oreFactor / 100) : 1))
+      );
       const inherited: Array<Blueprint> =
         this.getInheritedBlueprints(blueprint);
       if (inherited.length) {
@@ -167,7 +214,10 @@ export default {
             (d: Dependency) => d.name === blueprint.name
           );
           if (dep) {
-            count += Math.ceil((c * dep.count) / blueprint.produces);
+            count += Math.ceil(
+              (c * dep.count) /
+                (blueprint.produces * (blueprint.isOre ? (this.oreFactor / 100) : 1))
+            );
           }
         });
       }
@@ -185,11 +235,23 @@ export default {
         }
       },
     },
+    oreFactor: {
+      handler: function (val: number) {
+        if (val < this.minOreFactor) {
+          this.oreFactor = this.minOreFactor;
+        }
+        if (val > this.maxOreFactor) {
+          this.oreFactor = this.maxOreFactor;
+        }
+      },
+    },
     type: {
       immediate: true,
       handler: function (val: EventType) {
         this.merchantCount =
           localStorage.getItem(`${localStorageKey}_${val}`) || 1;
+        this.oreFactor =
+          localStorage.getItem(`${localStorageKey}_${val}_ore`) || 1;
       },
     },
   },
