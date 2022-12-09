@@ -77,7 +77,13 @@ export default {
         name: "The world is Mine",
         type: EventType.WORLD_IS_MINE,
       },
-    ],
+    ].sort((a, b) => {
+      if (a.type === EventType.BASE) return -1;
+      if (b.type === EventType.BASE) return 1;
+      if (a.name < b.name) return -1;
+      if (a.name > a.name) return 1;
+      return -0;
+    }),
   }),
   methods: {
     openUrl: (url: string) => {
