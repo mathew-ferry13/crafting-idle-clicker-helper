@@ -117,83 +117,95 @@ const baseEvent = new Event(EventType.BASE, 4, 100, 100, 10000, [
 ]);
 
 const worldIsMineEvent = new Event(EventType.WORLD_IS_MINE, 10, 10, 100, 100, [
-  new Blueprint("Copper Ore", 1, 1),
-  new Blueprint("Tin Ore", 1, 2),
-  new Blueprint("Bronze Ingots", 5, 3, [
+  new Blueprint("Copper Ore", 1, 1, false),
+  new Blueprint("Tin Ore", 1, 2, false),
+  new Blueprint("Bronze Ingots", 5, 3, false, [
     new Dependency("Copper Ore", 3),
     new Dependency("Tin Ore", 1),
   ]),
-  new Blueprint("Wood", 1, 4),
-  new Blueprint("Bronze Pickaxe", 1, 5, [
+  new Blueprint("Wood", 1, 4, false),
+  new Blueprint("Bronze Pickaxe", 1, 5, false, [
     new Dependency("Bronze Ingots", 2),
     new Dependency("Wood", 2),
   ]),
-  new Blueprint("Iron Ore", 3, 6, [new Dependency("Bronze Pickaxe", 1)]),
-  new Blueprint("Coal", 3, 7, [new Dependency("Bronze Pickaxe", 1)]),
-  new Blueprint("Iron Ingots", 5, 8, [
+  new Blueprint("Iron Ore", 3, 6, false, [new Dependency("Bronze Pickaxe", 1)]),
+  new Blueprint("Coal", 3, 7, false, [new Dependency("Bronze Pickaxe", 1)]),
+  new Blueprint("Iron Ingots", 5, 8, false, [
     new Dependency("Iron Ore", 2),
     new Dependency("Coal", 3),
   ]),
-  new Blueprint("Iron Chisel", 1, 9, [new Dependency("Iron Ingots", 1)]),
-  new Blueprint("Iron Pickaxe", 1, 10, [
+  new Blueprint("Iron Chisel", 1, 9, false, [new Dependency("Iron Ingots", 1)]),
+  new Blueprint("Iron Pickaxe", 1, 10, false, [
     new Dependency("Iron Ingots", 2),
     new Dependency("Wood", 2),
   ]),
-  new Blueprint("Silver Ore", 3, 11, [new Dependency("Iron Pickaxe", 1)]),
-  new Blueprint("Silver Ingots", 3, 12, [new Dependency("Silver Ore", 1)]),
-  new Blueprint("Steel", 1, 13, [
+  new Blueprint("Silver Ore", 3, 11, false, [
+    new Dependency("Iron Pickaxe", 1),
+  ]),
+  new Blueprint("Silver Ingots", 3, 12, false, [
+    new Dependency("Silver Ore", 1),
+  ]),
+  new Blueprint("Steel", 1, 13, false, [
     new Dependency("Iron Ingots", 2),
     new Dependency("Coal", 4),
   ]),
-  new Blueprint("Steel Chisel", 1, 14, [new Dependency("Steel", 1)]),
-  new Blueprint("Steel Pickaxe", 1, 15, [
+  new Blueprint("Steel Chisel", 1, 14, false, [new Dependency("Steel", 1)]),
+  new Blueprint("Steel Pickaxe", 1, 15, false, [
     new Dependency("Steel", 2),
     new Dependency("Wood", 2),
   ]),
-  new Blueprint("Gold Ore", 3, 16, [new Dependency("Steel Pickaxe", 1)]),
-  new Blueprint("Gold Ingots", 3, 17, [new Dependency("Gold Ore", 1)]),
-  new Blueprint("Coins", 10, 18, [
+  new Blueprint("Gold Ore", 3, 16, false, [new Dependency("Steel Pickaxe", 1)]),
+  new Blueprint("Gold Ingots", 3, 17, false, [new Dependency("Gold Ore", 1)]),
+  new Blueprint("Coins", 10, 18, false, [
     new Dependency("Silver Ingots", 1),
     new Dependency("Gold Ingots", 1),
   ]),
-  new Blueprint("Sulfur", 1, 19),
-  new Blueprint("Saltpeter", 1, 20),
-  new Blueprint("Gunpowder", 3, 21, [
+  new Blueprint("Sulfur", 1, 19, false),
+  new Blueprint("Saltpeter", 1, 20, false),
+  new Blueprint("Gunpowder", 3, 21, false, [
     new Dependency("Sulfur", 1),
     new Dependency("Saltpeter", 3),
   ]),
-  new Blueprint("Uncut Topaz", 2, 22, [new Dependency("Gunpowder", 1)]),
-  new Blueprint("Cut Topaz", 1, 23, [
+  new Blueprint("Uncut Topaz", 2, 22, false, [new Dependency("Gunpowder", 1)]),
+  new Blueprint("Cut Topaz", 1, 23, false, [
     new Dependency("Uncut Topaz", 1),
     new Dependency("Iron Chisel", 1),
   ]),
-  new Blueprint("Uncut Amethyst", 2, 24, [new Dependency("Gunpowder", 1)]),
-  new Blueprint("Cut Amethyst", 1, 25, [
+  new Blueprint("Uncut Amethyst", 2, 24, false, [
+    new Dependency("Gunpowder", 1),
+  ]),
+  new Blueprint("Cut Amethyst", 1, 25, false, [
     new Dependency("Uncut Amethyst", 1),
     new Dependency("Iron Chisel", 1),
   ]),
-  new Blueprint("Glycerol", 1, 26),
-  new Blueprint("Nitric Acid", 1, 27, [new Dependency("Saltpeter", 1)]),
-  new Blueprint("Nitrating Acid", 1, 28, [
+  new Blueprint("Glycerol", 1, 26, false),
+  new Blueprint("Nitric Acid", 1, 27, false, [new Dependency("Saltpeter", 1)]),
+  new Blueprint("Nitrating Acid", 1, 28, false, [
     new Dependency("Sulfur", 1),
     new Dependency("Nitric Acid", 1),
   ]),
-  new Blueprint("Nitroglycerin", 2, 29, [
+  new Blueprint("Nitroglycerin", 2, 29, false, [
     new Dependency("Glycerol", 1),
     new Dependency("Nitrating Acid", 1),
   ]),
-  new Blueprint("Uncut Emerald", 2, 30, [new Dependency("Nitroglycerin", 1)]),
-  new Blueprint("Cut Emerald", 1, 31, [
+  new Blueprint("Uncut Emerald", 2, 30, false, [
+    new Dependency("Nitroglycerin", 1),
+  ]),
+  new Blueprint("Cut Emerald", 1, 31, false, [
     new Dependency("Uncut Emerald", 1),
     new Dependency("Steel Chisel", 1),
   ]),
-  new Blueprint("Uncut Sapphire", 2, 32, [new Dependency("Nitroglycerin", 1)]),
-  new Blueprint("Cut Sapphire", 1, 33, [
+  new Blueprint("Uncut Sapphire", 2, 32, false, [
+    new Dependency("Nitroglycerin", 1),
+  ]),
+  new Blueprint("Cut Sapphire", 1, 33, false, [
     new Dependency("Uncut Sapphire", 1),
     new Dependency("Steel Chisel", 1),
   ]),
-  new Blueprint("Uncut Ruby", 2, 34, [new Dependency("Nitroglycerin", 1)]),
-  new Blueprint("Cut Ruby", 1, 35, [
+  new Blueprint("Uncut Ruby", 2, 34, false, [
+    new Dependency("Nitroglycerin", 1),
+  ]),
+  new Blueprint("Cut Ruby", 1, 35, false, [
     new Dependency("Uncut Ruby", 1),
     new Dependency("Steel Chisel", 1),
   ]),
