@@ -148,6 +148,10 @@ const worldIsMineEvent = new Event(EventType.WORLD_IS_MINE, 10, 10, [
     new Dependency("Sulfur", 1),
     new Dependency("Nitric Acid", 1),
   ]),
+  new Blueprint("Nitroglycerin", 2, 29, [
+    new Dependency("Glycerol", 1),
+    new Dependency("Nitrating Acid", 1),
+  ]),
 ]);
 
 export { baseEvent, worldIsMineEvent };
