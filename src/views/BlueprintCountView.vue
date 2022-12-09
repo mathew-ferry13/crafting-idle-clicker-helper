@@ -86,7 +86,7 @@
                   : Math.ceil(
                       (blueprintCounts.get(blueprint.name) *
                         (blueprint.produces *
-                          (blueprint.isOre ? (oreFactor / 100) : 1))) /
+                          (blueprint.isOre ? oreFactor / 100 : 1))) /
                         merchantCount
                     )
               }}
@@ -202,7 +202,7 @@ export default {
       }
       let count = Math.ceil(
         this.merchantCount /
-          (blueprint.produces * (blueprint.isOre ? (this.oreFactor / 100) : 1))
+          (blueprint.produces * (blueprint.isOre ? this.oreFactor / 100 : 1))
       );
       const inherited: Array<Blueprint> =
         this.getInheritedBlueprints(blueprint);
@@ -216,7 +216,8 @@ export default {
           if (dep) {
             count += Math.ceil(
               (c * dep.count) /
-                (blueprint.produces * (blueprint.isOre ? (this.oreFactor / 100) : 1))
+                (blueprint.produces *
+                  (blueprint.isOre ? this.oreFactor / 100 : 1))
             );
           }
         });

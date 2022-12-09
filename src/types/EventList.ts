@@ -64,7 +64,7 @@ const baseEvent = new Event(EventType.BASE, 4, 100, 100, 10000, [
     new Dependency("Coal", 3),
     new Dependency("Iron Ore", 2),
   ]),
-  new Blueprint("Chisel", 0, 27, false),
+  new Blueprint("Chisel", 1, 27, false, [new Dependency("Iron Ingots", 1)]),
   new Blueprint("Iron Mace", 1, 28, false, [new Dependency("Iron Ingots", 4)]),
   new Blueprint("Iron Rivets", 5, 29, false, [
     new Dependency("Iron Ingots", 1),
