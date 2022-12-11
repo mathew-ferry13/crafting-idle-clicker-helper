@@ -69,7 +69,10 @@ const baseEvent = new Event(EventType.BASE, 4, 100, 100, 10000, [
   new Blueprint("Iron Rivets", 5, 29, false, [
     new Dependency("Iron Ingots", 1),
   ]),
-  new Blueprint("Shovel", 0, 30, false),
+  new Blueprint("Shovel", 1, 30, false, [
+    new Dependency("Wood", 2),
+    new Dependency("Iron Ingots", 1),
+  ]),
   new Blueprint("Lump Hammer", 0, 31, false),
   new Blueprint("Iron Helmet", 1, 32, false, [
     new Dependency("Iron Rivets", 5),
