@@ -214,6 +214,8 @@ const worldIsMineEvent = new Event(EventType.WORLD_IS_MINE, 10, 10, 100, 100, [
   ]),
 ]);
 
-export { baseEvent, worldIsMineEvent };
+const windItUpEvent = new Event(EventType.WIND_IT_UP, 10, 10, 100, 100, []);
 
-export default [baseEvent, worldIsMineEvent];
+export { baseEvent, worldIsMineEvent, windItUpEvent };
+
+export default [baseEvent, worldIsMineEvent, windItUpEvent];

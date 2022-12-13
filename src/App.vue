@@ -77,6 +77,10 @@ export default {
         name: "The world is Mine",
         type: EventType.WORLD_IS_MINE,
       },
+      {
+        name: "Wind it up",
+        type: EventType.WIND_IT_UP,
+      },
     ].sort((a, b) => {
       if (a.type === EventType.BASE) return -1;
       if (b.type === EventType.BASE) return 1;
