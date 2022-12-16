@@ -214,7 +214,60 @@ const worldIsMineEvent = new Event(EventType.WORLD_IS_MINE, 10, 10, 100, 100, [
   ]),
 ]);
 
-const windItUpEvent = new Event(EventType.WIND_IT_UP, 10, 10, 100, 100, []);
+const windItUpEvent = new Event(EventType.WIND_IT_UP, 10, 10, 100, 100, [
+  new Blueprint("Wood", 1, 1, false, []),
+  new Blueprint("Flute", 1, 2, false, [new Dependency("Wood", 1)]),
+  new Blueprint("Copper Ore", 1, 3, true, []),
+  new Blueprint("Copper Ingots", 3, 4, false, [
+    new Dependency("Copper Ore", 1),
+  ]),
+  new Blueprint("Horn", 1, 5, false, [new Dependency("Copper Ingots", 2)]),
+  new Blueprint("Coal", 1, 6, true, []),
+  new Blueprint("Iron Ore", 1, 7, true, []),
+  new Blueprint("Iron Ingots", 5, 8, false, [
+    new Dependency("Coal", 3),
+    new Dependency("Iron Ore", 2),
+  ]),
+  new Blueprint("Iron Rivets", 5, 9, false, [new Dependency("Iron Ingots", 1)]),
+  new Blueprint("Mechanical Parts", 2, 10, false, [
+    new Dependency("Wood", 2),
+    new Dependency("Iron Rivets", 8),
+  ]),
+  new Blueprint("Piston Valves", 2, 11, false, [
+    new Dependency("Copper Ingots", 1),
+    new Dependency("Mechanical Parts", 2),
+  ]),
+  new Blueprint("Trumpet Tube", 1, 12, false, [
+    new Dependency("Copper Ingots", 3),
+  ]),
+  new Blueprint("Trumpet", 1, 13, false, [
+    new Dependency("Piston Valves", 3),
+    new Dependency("Trumpet Tube", 1),
+  ]),
+  new Blueprint("Tuba Tube", 1, 14, false, [
+    new Dependency("Copper Ingots", 5),
+  ]),
+  new Blueprint("Tuba", 1, 15, false, [
+    new Dependency("Piston Valves", 5),
+    new Dependency("Tuba Tube", 1),
+  ]),
+  new Blueprint("Keys", 10, 16, false, [
+    new Dependency("Iron Ingots", 1),
+    new Dependency("Mechanical Parts", 5),
+  ]),
+  new Blueprint("Clarinet Body", 1, 17, false, [new Dependency("Wood", 1)]),
+  new Blueprint("Clarinet", 1, 18, false, [
+    new Dependency("Keys", 17),
+    new Dependency("Clarinet Body", 1),
+  ]),
+  new Blueprint("Saxophone Body", 1, 19, false, [
+    new Dependency("Copper Ingots", 4),
+  ]),
+  new Blueprint("Saxophone", 1, 20, false, [
+    new Dependency("Keys", 23),
+    new Dependency("Saxophone Body", 1),
+  ]),
+]);
 
 export { baseEvent, worldIsMineEvent, windItUpEvent };
 
