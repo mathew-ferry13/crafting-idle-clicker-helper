@@ -81,6 +81,14 @@ export default {
         name: "Wind it up",
         type: EventType.WIND_IT_UP,
       },
+      {
+        name: "Space Craft",
+        type: EventType.SPACE_CRAFT,
+      },
+      {
+        name: "Santa's Workshop",
+        type: EventType.SANTA_WORKSHOP,
+      },
     ].sort((a, b) => {
       if (a.type === EventType.BASE) return -1;
       if (b.type === EventType.BASE) return 1;

@@ -269,6 +269,128 @@ const windItUpEvent = new Event(EventType.WIND_IT_UP, 10, 10, 100, 100, [
   ]),
 ]);
 
-export { baseEvent, worldIsMineEvent, windItUpEvent };
+const spaceCraftEvent = new Event(EventType.SPACE_CRAFT, 10, 10, 100, 100, [
+  new Blueprint("Copper Ore", 1, 1, true, []),
+  new Blueprint("Copper Ingots", 3, 2, false, [
+    new Dependency("Copper Ore", 1),
+  ]),
+  new Blueprint("Coal", 3, 2, true, []),
+  new Blueprint("Iron Ore", 1, 4, true, []),
+  new Blueprint("Iron Ingots", 5, 5, false, [
+    new Dependency("Coal", 3),
+    new Dependency("Iron Ore", 2),
+  ]),
+  new Blueprint("Iron Rivets", 5, 6, false, [new Dependency("Iron Ingots", 1)]),
+  new Blueprint("Electrical Parts", 4, 7, false, [
+    new Dependency("Copper Ingots", 2),
+    new Dependency("Iron Rivets", 8),
+  ]),
+  new Blueprint("Bauxite", 1, 8, true, []),
+  new Blueprint("Aluminium", 5, 9, false, [
+    new Dependency("Coal", 3),
+    new Dependency("Bauxite", 2),
+  ]),
+  new Blueprint("Solar Panel", 2, 10, false, [
+    new Dependency("Electrical Parts", 6),
+    new Dependency("Aluminium", 4),
+  ]),
+  new Blueprint("Antenna", 1, 11, false, [
+    new Dependency("Copper Ingots", 3),
+    new Dependency("Electrical Parts", 4),
+  ]),
+  new Blueprint("Telescope", 1, 12, false, [
+    new Dependency("Aluminium", 2),
+    new Dependency("Electrical Parts", 4),
+  ]),
+  new Blueprint("Ilmenite", 1, 13, true, []),
+  new Blueprint("Titanium", 4, 14, false, [
+    new Dependency("Ilmenite", 2),
+    new Dependency("Coal", 3),
+  ]),
+  new Blueprint("Probe Body", 1, 15, false, [
+    new Dependency("Titanium", 4),
+    new Dependency("Telescope", 1),
+  ]),
+  new Blueprint("Probe Parts", 1, 16, false, [
+    new Dependency("Solar Panel", 2),
+    new Dependency("Antenna", 1),
+  ]),
+]);
 
-export default [baseEvent, worldIsMineEvent, windItUpEvent];
+const santaWorkshopEvent = new Event(
+  EventType.SANTA_WORKSHOP,
+  10,
+  10,
+  100,
+  100,
+  [
+    new Blueprint("Snowball", 1, 1, false, []),
+    new Blueprint("Baking Ingredients", 2, 2, false, []),
+    new Blueprint("Gingerbread Man", 1, 3, false, [
+      new Dependency("Baking Ingredients", 2),
+    ]),
+    new Blueprint("Christmas Cookies", 5, 4, false, [
+      new Dependency("Baking Ingredients", 3),
+    ]),
+    new Blueprint("Wrapping Paper", 1, 5, false, []),
+    new Blueprint("Small Present", 1, 6, false, [
+      new Dependency("Christmas Cookies", 3),
+      new Dependency("Wrapper Paper", 1),
+    ]),
+    new Blueprint("Candy Cane", 3, 7, false, [
+      new Dependency("Baking Ingredients", 2),
+    ]),
+    new Blueprint("Fabric", 1, 8, false, []),
+    new Blueprint("Snowman", 1, 9, false, [
+      new Dependency("Fabric", 1),
+      new Dependency("Snowball", 10),
+    ]),
+    new Blueprint("Christmas Hat", 1, 10, false, [new Dependency("Fabric", 2)]),
+    new Blueprint("Winter Cloak", 1, 11, false, [new Dependency("Fabric", 5)]),
+    new Blueprint("Big Present", 1, 12, false, [
+      new Dependency("Winter Cloak", 1),
+      new Dependency("Wrapping Paper", 3),
+    ]),
+    new Blueprint("Fir Tree", 1, 13, false, []),
+    new Blueprint("Gold Ore", 1, 14, false, []),
+    new Blueprint("Gold Ingots", 3, 15, false, [new Dependency("Gold Ore", 1)]),
+    new Blueprint("Uncut Emerald", 1, 16, false, []),
+    new Blueprint("Gold Ring", 1, 17, false, [
+      new Dependency("Gold Ingots", 1),
+    ]),
+    new Blueprint("Cut Emerald", 1, 18, false, [
+      new Dependency("Uncut Emerald", 1),
+    ]),
+    new Blueprint("Gold Necklace", 1, 19, false, [
+      new Dependency("Gold Ingots", 3),
+    ]),
+    new Blueprint("Emerald Ring", 1, 20, false, [
+      new Dependency("Cut Emerald", 2),
+      new Dependency("Gold Ring", 2),
+    ]),
+    new Blueprint("Christmas Decorations", 1, 21, false, [
+      new Dependency("Gold Ingots", 4),
+      new Dependency("Wrapping Paper", 2),
+    ]),
+    new Blueprint("Christmas Tree", 1, 22, false, [
+      new Dependency("Fir Tree", 1),
+      new Dependency("Christmas Decorations", 1),
+    ]),
+  ]
+);
+
+export {
+  baseEvent,
+  worldIsMineEvent,
+  windItUpEvent,
+  spaceCraftEvent,
+  santaWorkshopEvent,
+};
+
+export default [
+  baseEvent,
+  worldIsMineEvent,
+  windItUpEvent,
+  spaceCraftEvent,
+  santaWorkshopEvent,
+];
